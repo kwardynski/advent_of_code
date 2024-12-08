@@ -1,4 +1,5 @@
 use csv::ReaderBuilder;
+use std::collections::HashMap;
 
 fn main() {
     let file_name = "../input.csv";
@@ -30,7 +31,7 @@ fn main() {
     column_1.sort();
     column_2.sort();
 
-    // Find the distance
+    // Part 1 - Distance
     let mut distance = 0;
     let data_length = column_1.len();
 
@@ -38,5 +39,27 @@ fn main() {
         distance = distance + (column_1[i] - column_2[i]).abs();
     }
 
-    println!("{}", distance);
+    println!("distance: {}", distance);
+
+    // Part 2 - Similarity Score
+    let mut similarity_map = HashMap::new();
+    for i in 0..data_length {
+        let value = column_2[i];
+        similarity_map
+            .entry(value)
+            .and_modify(|counter| *counter += 1)
+            .or_insert(1);
+    }
+
+    let mut similarity_score = 0;
+    for i in 0..data_length {
+        let value = column_1[i];
+        let count = similarity_map.get(&value);
+
+        if !count.is_none() {
+            similarity_score = similarity_score + value * count.unwrap();
+        }
+    }
+
+    println!("similarity score: {}", similarity_score);
 }
