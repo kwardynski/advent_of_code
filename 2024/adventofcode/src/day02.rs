@@ -1,9 +1,9 @@
 use csv::ReaderBuilder;
 
-const FILE_NAME: &str = "../inputs/day02.csv";
+const FILE_NAME: &str = "../inputs/Day02.csv";
 
 pub fn solution() {
 
-    // We want to read line by line since 
+    // We want to read line by line
 
 }

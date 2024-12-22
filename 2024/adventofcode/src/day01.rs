@@ -1,7 +1,7 @@
 use csv::ReaderBuilder;
 use std::collections::HashMap;
 
-const FILE_NAME: &str = "../inputs/day01.csv";
+const FILE_NAME: &str = "../inputs/Day01.csv";
 
 pub fn solution() {
     // Specify the Reader Builder
