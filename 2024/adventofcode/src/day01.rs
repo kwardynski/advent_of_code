@@ -1,10 +1,10 @@
 use csv::ReaderBuilder;
 use std::collections::HashMap;
 
-fn main() {
-    let file_name = "../input.csv";
-    let mut column_1: Vec<i64> = Vec::new();
-    let mut column_2: Vec<i64> = Vec::new();
+const FILE_NAME: &str = "../inputs/Day01.csv";
+
+pub fn solution() {
+    println!("\nDay 1");
 
     // Specify the Reader Builder
     // mut = mutable, since we'll be configuring it with the function chain
@@ -12,11 +12,14 @@ fn main() {
     builder.has_headers(false);
 
     // Read the file, unwrap the results into a Reader struct
-    let result = builder.from_path(file_name);
+    let result = builder.from_path(FILE_NAME);
     let mut my_reader = result.unwrap();
 
     // For each record, unwrap Result -> StringRecord
     // Get the components by index, unwrap, then add to
+    let mut column_1: Vec<i64> = Vec::new();
+    let mut column_2: Vec<i64> = Vec::new();
+    
     for record in my_reader.records() {
         let line = record.unwrap();
 
@@ -39,7 +42,7 @@ fn main() {
         distance = distance + (column_1[i] - column_2[i]).abs();
     }
 
-    println!("distance: {}", distance);
+    println!("  distance: {}", distance);
 
     // Part 2 - Similarity Score
     let mut similarity_map = HashMap::new();
@@ -61,5 +64,5 @@ fn main() {
         }
     }
 
-    println!("similarity score: {}", similarity_score);
+    println!("  similarity score: {}", similarity_score);
 }
