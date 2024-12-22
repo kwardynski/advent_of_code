@@ -4,6 +4,8 @@ use std::collections::HashMap;
 const FILE_NAME: &str = "../inputs/Day01.csv";
 
 pub fn solution() {
+    println!("\nDay 1");
+
     // Specify the Reader Builder
     // mut = mutable, since we'll be configuring it with the function chain
     let mut builder = ReaderBuilder::new();
@@ -40,7 +42,7 @@ pub fn solution() {
         distance = distance + (column_1[i] - column_2[i]).abs();
     }
 
-    println!("distance: {}", distance);
+    println!("  distance: {}", distance);
 
     // Part 2 - Similarity Score
     let mut similarity_map = HashMap::new();
@@ -62,5 +64,5 @@ pub fn solution() {
         }
     }
 
-    println!("similarity score: {}", similarity_score);
+    println!("  similarity score: {}", similarity_score);
 }
