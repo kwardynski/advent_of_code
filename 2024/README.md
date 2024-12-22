@@ -2,5 +2,5 @@
 
 I will be attempting to do the 2024 AoC in Rust, which means I will be learning Rust while attempting the 2024 AoC.
 
-- [Day 1](./Day01/)
-- [Day 2](./Day02/)
+- [x] [Day 1](./notes/Day01.md)
+- [ ] [Day 2](./notes/Day02.md)
