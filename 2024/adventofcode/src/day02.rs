@@ -59,4 +59,38 @@ pub fn solution() {
     }
 
     println!("  safe reports: {}", num_safe_lines);
+
+    // Part 2
+    // Same as day 1, except for unsafe lines ->
+    //   - Iterate over the vector, removing 1 element at a time
+    //   - Determine safety, short circuit at first safety
+    let mut num_safe_lines = 0;
+    let reader = BufReader::new(File::open(FILE_NAME).expect("Cannot open file"));
+
+    for line in reader.lines() {
+        let line_vector = parse_line(&line.unwrap());
+        let diff_vector = calculate_diffs(&line_vector);
+        let safe = is_report_safe(&diff_vector);
+
+        if safe {
+            num_safe_lines = num_safe_lines + 1;
+        } else {
+            let vector_length = line_vector.len();
+
+            for i in 0..vector_length {
+                let mut attempt_vector = line_vector.clone();
+                attempt_vector.remove(i);
+
+                let attempt_diff_vector = calculate_diffs(&attempt_vector);
+                let attempt_safe = is_report_safe(&attempt_diff_vector);
+
+                if attempt_safe {
+                    num_safe_lines = num_safe_lines + 1;
+                    break;
+                }
+            }
+        }
+    }
+
+    println!("  safe reports with buffer: {}", num_safe_lines);
 }
