@@ -4,3 +4,4 @@ I will be attempting to do the 2024 AoC in Rust, which means I will be learning 
 
 - [x] [Day 1](./notes/Day01.md)
 - [x] [Day 2](./notes/Day02.md)
+- [ ] [Day 3](./notes/Day03.md)
