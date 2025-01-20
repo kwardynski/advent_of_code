@@ -13,7 +13,6 @@ pub fn solution() -> Result<(), std::io::Error> {
     println!("\nDay 3");
     let mut sum = 0;
 
-    // Read the text file into memory
     let input_string = fs::read_to_string(FILE_NAME)?;
     let mul_splits = input_string.split("mul(");
 
